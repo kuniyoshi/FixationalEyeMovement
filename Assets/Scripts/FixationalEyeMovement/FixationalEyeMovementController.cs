@@ -11,51 +11,41 @@ namespace FixationalEyeMovement
 
         public EyeRotationConfig Tremore;
 
-        public List<EyeRotationConfig> Flicks;
+        public EyeRotationConfig Drift;
 
-        List<FixationalEyeRotation> _flicks;
+        public EyeRotationConfig Flick;
 
         Vector3 _initialRotation;
 
-        FixationalEyeRotation _tremore;
+        List<FixationalEyeRotation> _rotations;
 
         void Awake()
         {
             Assert.IsNotNull(Tremore);
-            Assert.IsNotNull(Flicks);
+            Assert.IsNotNull(Drift);
+            Assert.IsNotNull(Flick);
         }
 
         void Start()
         {
-            _tremore = new FixationalEyeRotation();
-            _tremore.Setup(Tremore);
-            _flicks = Flicks
-                .Select(config =>
-                    {
-                        var flick = new FixationalEyeRotation();
-                        flick.Setup(config);
-
-                        return flick;
-                    }
-                )
-                .ToList();
-
             _initialRotation = transform.rotation.eulerAngles;
+
+            _rotations = new[] {Tremore, Drift, Flick}
+                .Select(config =>
+                {
+                    var rotation = new FixationalEyeRotation();
+                    rotation.Setup(config);
+
+                    return rotation;
+                })
+                .ToList();
         }
 
         void Update()
         {
-            _tremore.Update(Time.deltaTime);
-            var tremoreRotation = _tremore.GetCurrentRotation();
+            _rotations.ForEach(r => r.Update(Time.deltaTime));
 
-            var flickRotations = _flicks.Select(flick =>
-            {
-                flick.Update(Time.deltaTime);
-
-                return flick.GetCurrentRotation();
-            });
-
-            var y = tremoreRotation + flickRotations.Sum();
+            var y = _rotations.Sum(r => r.GetCurrentRotation());
 
             var rotation = new Vector3(0f, y, 0f);
 
