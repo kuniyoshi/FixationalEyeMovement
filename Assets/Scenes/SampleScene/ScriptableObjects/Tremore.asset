@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c389ff34279294dfcad9238b6893d3cd, type: 3}
   m_Name: Tremore
   m_EditorClassIdentifier: 
-  Hertz: 0
-  DegreeSeconds: 0
+  Hertz: 80
+  DegreeSeconds: 15
