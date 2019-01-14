@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 1543071438}
   - component: {fileID: 1543071439}
   m_Layer: 0
-  m_Name: root
+  m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -491,4 +491,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EyeIn: {fileID: 1207172182}
   Radius: 5
-  DegreeSeconds: 0
