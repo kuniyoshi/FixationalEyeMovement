@@ -3,7 +3,7 @@
 namespace FixationalEyeMovement
 {
 
-    [CreateAssetMenu(menuName = "RitaBt/EyeRotationConfig")]
+    [CreateAssetMenu(menuName = "FixationalEyeMovement/EyeRotationConfig")]
     public class EyeRotationConfig : ScriptableObject
     {
 
