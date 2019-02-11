@@ -686,7 +686,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53198fe4f4b35435385f930363cfcf51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EyeRotationConfig: {fileID: 11400000, guid: 3197c4ec68a964da38750045d90e1b68, type: 2}
+  HorizontalEyeRotationConfig: {fileID: 11400000, guid: 3197c4ec68a964da38750045d90e1b68,
+    type: 2}
+  HorizontalInitialRandomRange:
+    Min: 0
+    Max: 1
+  VerticalEyeRotationConfig: {fileID: 11400000, guid: bd7ffb848218048358c6e11df67387f5,
+    type: 2}
+  VerticalInitialRandomRange:
+    Min: 0
+    Max: 1
 --- !u!1 &2043665334
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c389ff34279294dfcad9238b6893d3cd, type: 3}
-  m_Name: EyeRotationConfig
+  m_Name: VerticalEyeRotationConfig
   m_EditorClassIdentifier: 
-  Tremore: {fileID: 11400000, guid: ef3bce6e3b6cf4536b8c1043cd8c3158, type: 2}
-  Drift: {fileID: 11400000, guid: b5b70496d955a4c4a9c20169b30800e6, type: 2}
-  Flick: {fileID: 11400000, guid: 70b12f15e9be7432ca629f5e04a443ab, type: 2}
+  Tremore: {fileID: 11400000, guid: ff7d60278dbac49e28c8f085b53fdc48, type: 2}
+  Drift: {fileID: 11400000, guid: 2dea1ea7e67c94aca88f1a71b1589a88, type: 2}
+  Flick: {fileID: 11400000, guid: fea1a399c223c4834b813effb36fc1ae, type: 2}
