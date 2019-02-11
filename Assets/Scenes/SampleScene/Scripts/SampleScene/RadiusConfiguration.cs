@@ -15,7 +15,7 @@ namespace SampleScene
         // Start is called before the first frame update
         void Start()
         {
-            Assert.IsNotNull(EyeIn);
+            Assert.IsNotNull(EyeIn, "EyeIn != null");
         }
 
         // Update is called once per frame
