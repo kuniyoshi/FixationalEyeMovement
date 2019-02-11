@@ -1,7 +1,8 @@
+using FixationalEyeMovement;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace FixationalEyeMovement
+namespace SampleScene
 {
 
     public class FixationalEyeMovementController : MonoBehaviour
