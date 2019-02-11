@@ -686,9 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53198fe4f4b35435385f930363cfcf51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tremore: {fileID: 11400000, guid: a467a1fa88545420096182e90fd0d841, type: 2}
-  Drift: {fileID: 11400000, guid: 3215214ddb84a499d97a34110c1e9808, type: 2}
-  Flick: {fileID: 11400000, guid: b48591cc5f9324665b60070cea41db7c, type: 2}
+  EyeRotationConfig: {fileID: 11400000, guid: 3197c4ec68a964da38750045d90e1b68, type: 2}
 --- !u!1 &2043665334
 GameObject:
   m_ObjectHideFlags: 0

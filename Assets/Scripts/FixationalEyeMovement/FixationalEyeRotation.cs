@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using FixationalEyeMovement.PseudoRandomWave;
+using UnityEngine;
 
 namespace FixationalEyeMovement
 {
@@ -8,58 +11,37 @@ namespace FixationalEyeMovement
 
         const int DegreeSecondsToDegree = 3600;
 
-        Vector3 _currentRotation;
+        EyeRotationConfig Config { get; }
 
-        readonly Direction _direction;
+        List<RandomCompositeWave> Waves { get; }
 
-        float _halfDegreeSeconds;
-
-        float _hertz;
-
-        float _normalizedPosition;
-
-        public FixationalEyeRotation()
+        public FixationalEyeRotation(EyeRotationConfig eyeRotationConfig)
         {
-            _direction = new Direction();
+            Config = Object.Instantiate(eyeRotationConfig);
+            Waves = Config.CreateWaves()
+                .ToList();
         }
 
         public float GetCurrentRotation()
         {
-            var degree = _halfDegreeSeconds
-                         / DegreeSecondsToDegree
-                         * (2f * _normalizedPosition - 1f);
+            var degree = Waves.Sum(wave => wave.GetCurrent())
+                         / DegreeSecondsToDegree;
 
             return degree;
-        }
-
-        public void Setup(EyeRotationConfig eyeRotationConfig)
-        {
-            _halfDegreeSeconds = eyeRotationConfig.DegreeSeconds / 2f;
-            _hertz = eyeRotationConfig.Hertz;
         }
 
         public override string ToString()
         {
             return $"{nameof(FixationalEyeRotation)}{{"
                    + $"CurrentValue: {GetCurrentRotation()}"
-                   + $", Position: {_normalizedPosition}"
+                   + $", Config: {Config}"
+                   + $", Waves: [{string.Join(", ", Waves)}]"
                    + $"}}";
         }
 
         public void Update(float deltaTime)
         {
-            _normalizedPosition = _normalizedPosition
-                                  + _direction.Value * _hertz * deltaTime;
-
-            var didOverlap = _normalizedPosition > 1f
-                             || _normalizedPosition < 0f;
-
-            _normalizedPosition = Mathf.Clamp01(_normalizedPosition);
-
-            if (didOverlap)
-            {
-                _direction.ChangeDirection();
-            }
+            Waves.ForEach(wave => wave.Update(deltaTime));
         }
 
     }

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -9,44 +7,28 @@ namespace FixationalEyeMovement
     public class FixationalEyeMovementController : MonoBehaviour
     {
 
-        public EyeRotationConfig Tremore;
-
-        public EyeRotationConfig Drift;
-
-        public EyeRotationConfig Flick;
+        public EyeRotationConfig EyeRotationConfig;
 
         Vector3 _initialRotation;
 
-        List<FixationalEyeRotation> _rotations;
+        FixationalEyeRotation _rotation;
 
         void Awake()
         {
-            Assert.IsNotNull(Tremore);
-            Assert.IsNotNull(Drift);
-            Assert.IsNotNull(Flick);
+            Assert.IsNotNull(EyeRotationConfig);
         }
 
         void Start()
         {
             _initialRotation = transform.rotation.eulerAngles;
-
-            _rotations = new[] {Tremore, Drift, Flick}
-                .Select(config =>
-                {
-                    var rotation = new FixationalEyeRotation();
-                    rotation.Setup(config);
-
-                    return rotation;
-                })
-                .ToList();
+            _rotation = new FixationalEyeRotation(EyeRotationConfig);
         }
 
         void Update()
         {
-            _rotations.ForEach(r => r.Update(Time.deltaTime));
+            _rotation.Update(Time.deltaTime);
 
-            var y = _rotations.Sum(r => r.GetCurrentRotation());
-
+            var y = _rotation.GetCurrentRotation();
             var rotation = new Vector3(0f, y, 0f);
 
             transform.rotation = Quaternion.Euler(
