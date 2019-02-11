@@ -54,7 +54,7 @@ plot(x = x / 2 / pi, y = wave(d.tremore), type="l", xlab = "Time [s]", ylab = "A
 plot(x = x / 2 / pi, y = wave(d.drift), type="l", xlab = "Time [s]", ylab = "Amplitude [degree minutes]")
 ```
 
-![Tremore](../../../docs/images/drift.png)
+![Drift](../../../docs/images/drift.png)
 
 ### Flick
 
@@ -68,7 +68,7 @@ plot(x = x / 2 / pi, y = wave(d.drift), type="l", xlab = "Time [s]", ylab = "Amp
 > plot(x = x / 2 / pi, y = apply(apply(d.flick, 1, wave), 1, sum), type="l", xlab = "Time [s]", ylab = "Amplitude [degree minutes]")
 ```
 
-![Tremore](../../../docs/images/flick.png)
+![Flick](../../../docs/images/flick.png)
 
 ### Sum
 
@@ -84,4 +84,4 @@ plot(x = x / 2 / pi, y = wave(d.drift), type="l", xlab = "Time [s]", ylab = "Amp
 > plot(x = x / 2 / pi, y = apply(apply(d, 1, wave), 1, sum), type="l", xlab = "Time [s]", ylab = "Amplitude [degree minutes]")
 ```
 
-![Tremore](../../../docs/images/fixational_eye_movement.png)
+![Fixational Eye Movement](../../../docs/images/fixational_eye_movement.png)
